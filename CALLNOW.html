@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Call Now - FitLife</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #ece9e6, #ffffff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    .call-container {
+      background: #fff;
+      padding: 2.5rem 3rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 420px;
+      width: 100%;
+      animation: fadeIn 0.9s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: #ff4d4d;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .call-btn {
+      display: inline-block;
+      padding: 0.9rem 1.5rem;
+      background-color: #ff4d4d;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 0.6rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .call-btn:hover {
+      background-color: #e03838;
+    }
+
+    .contact-info {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    .contact-info strong {
+      color: #000;
+    }
+
+    @media (max-width: 480px) {
+      .call-container {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="call-container">
+    <h1>Call Our Team</h1>
+    <p>Have a question or need help? Our team is here for you!</p>
+    <a href="tel:+91 7009344126" class="call-btn">📞 Call Now</a>
+
+    <div class="contact-info">
+      <p>Support available: <strong>Mon - Sat, 9am to 6pm</strong></p><br>
+      <p>Alternate contact: <strong>info@FireFitness.com</strong></p>
+    </div>
+  </div>
+</body>
+</html>

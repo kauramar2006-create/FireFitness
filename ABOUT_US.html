@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - FitZone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            margin: 0;
+
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #222;
+            width: 100%;
+            height: 80px;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        /* Slide-down animation for header */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-container {
+            max-width: 1200px;
+            height: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #ff4d4d;
+            /* Accent color */
+            font-weight: 900;
+        }
+
+        /* Nav list */
+        .nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: white;
+            background-color: #494949;
+            /* border: 1px solid white; */
+            font-weight: 500;
+            /* transition: color 0.3s; */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+
+        .nav li {
+            transition: transform 0.3s ease;
+        }
+
+        .nav li:hover {
+            transform: scale(1.1);
+        }
+
+        .nav a:hover {
+            background-color: #716b6b;
+            /* transform: scale(1.1); */
+        }
+
+        /* Icon group */
+        .icon-group {
+            display: flex;
+            gap: 1.2rem;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .icon-wrapper {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            color: #ffffff;
+            transition: transform 0.3s ease;
+        }
+
+        .icon:hover {
+            transform: scale(1.1);
+        }
+
+        .icon-tooltip {
+            position: absolute;
+            bottom: 120%;
+            /* goes above the icon */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #222;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: translateY(10px);
+        }
+
+        .icon-wrapper:hover .icon-tooltip {
+            opacity: 1;
+        }
+
+        .icon-wrapper:hover .hover-text {
+            opacity: 1;
+            /* visibility: visible; */
+            transform: translateY(0);
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+                padding: 10px 20px;
+                gap: 10px;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                gap: 0.8rem;
+                width: 100%;
+                padding-left: 0;
+            }
+
+            .nav {
+                width: 100%;
+            }
+
+            .icon-group {
+                align-self: flex-end;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+        }
+
+
+        footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 40px 20px 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .footer-section {
+            flex: 1 1 250px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            border-bottom: 2px solid #555;
+            padding-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+        }
+
+        .newsletter-form input {
+            padding: 8px;
+            width: 70%;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .newsletter-form button {
+            padding: 8px 12px;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+        }
+
+        .about-hero {
+            background-image: url('abouthero.avif');
+            /* Replace with your actual image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 100px 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            animation: bgZoom 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgZoom {
+            0% {
+                background-size: 100%;
+            }
+
+            100% {
+                background-size: 115%;
+            }
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .about-hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .about-hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        .about-container {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: auto;
+
+
+        }
+
+        .about-section {
+            margin-bottom: 60px;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease both;
+            background: linear-gradient(to bottom right, #f4f4f4, #e0eafc, #f4f4f4);
+        }
+
+        .about-section p {
+            text-align: center;
+            font-size: 1.2rem;
+
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .team-member {
+            flex: 1 1 250px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: scale(1.05);
+        }
+
+        .team-member img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .core-values {
+            display: flex;
+            flex-direction: row;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .core-value-item {
+            flex: 1 1 250px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .core-value-item:hover {
+            transform: scale(1.05);
+            /* background-color: #cedfff; */
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            font-style: italic;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .core-values {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Fire<span>Fitness</span></div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="MINIPROJECT_HOME.html">Home</a></li>
+                    <li><a href="ABOUT_US.html">About Us</a></li>
+                    <li><a href="PROGRAM.html">Programs</a></li>
+                    <li><a href="WORKOUT.html">Workouts</a></li>
+                    <li><a href="NUTRITION.html">Nutrition Guide</a></li>
+                    <li><a href="FITNESSCALCULATOR.html">Fitness Calculator</a></li>
+                </ul>
+            </nav>
+
+            <div class="icon-group">
+
+                <!-- Join Now Icon -->
+                <a href="REGISTER.html" target="_blank" class="icon-wrapper"></a>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="8.5" cy="7" r="4" />
+                        <line x1="20" y1="8" x2="20" y2="14" />
+                        <line x1="23" y1="11" x2="17" y2="11" />
+                    </svg>
+                    <span class="icon-tooltip">Register</span>
+                </a>
+
+                <!-- Call Now Icon -->
+                <a href="CALLNOW.html" target="_blank" class="icon-wrapper">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3 5.18
+                             2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72 12.05 12.05 0 0 0 .6 2.57
+                             2 2 0 0 1-.45 2.11L9.03 11a16 16 0 0 0 6.97 6.97l1.6-1.12
+                             a2 2 0 0 1 2.11-.45 12.05 12.05 0 0 0 2.57.6A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    <span class="icon-tooltip">Call Now</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <section class="about-hero">
+        <p>Empowering you to live your healthiest, strongest life with expert-backed programs and nutritional guidance.</p>
+    </section>
+    
+    <section class="about-container">
+        <div class="about-section">
+            <h2>Our Mission</h2>
+            <p>At FireFitness, our mission is to empower individuals to live healthier, more active lives through
+                personalized fitness and nutrition plans, expert coaching, and an inclusive community.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="trainer1.jpg" alt="Trainer 1">
+                    <h4>Anshuka Parwani</h4>
+                    <p>Head Coach & Transformation Expert</p>
+                </div>
+                <div class="team-member">
+                    <img src="trainer2.webp" alt="Trainer 2">
+                    <h4>Lavleen Kaur</h4>
+                    <p>Nutritionist & Wellness Guide</p>
+                </div>
+                <div class="team-member">
+                    <img src="trainer3.webp" alt="Trainer 3">
+                    <h4>Kris Gethin</h4>
+                    <p>Strength & Conditioning Specialist</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2>Core Values</h2>
+            <div class="core-values">
+                <div class="core-value-item">
+                    <h4>🏋️‍♂️ Commitment</h4>
+                    <p>We are dedicated to your long-term success.</p>
+                </div>
+                <div class="core-value-item">
+                    <h4>🤝 Integrity</h4>
+                    <p>We build trust through transparency and accountability.</p>
+                </div>
+                <div class="core-value-item">
+                    <h4>🌟 Growth</h4>
+                    <p>We continuously evolve to serve you better.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2>Why Choose FitZone?</h2>
+            <ul>
+                <li>✔ Certified and passionate coaches</li>
+                <li>✔ Customized programs tailored to YOU</li>
+                <li>✔ Proven track record with client results</li>
+                <li>✔ A positive, goal-oriented environment</li>
+            </ul>
+        </div>
+
+        <div class="about-section">
+            <h2>Success Stories</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    "FitZone completely changed my life! I've lost 20kg and gained confidence."
+                    <br>– Priya K.
+                </div>
+                <div class="testimonial">
+                    "The coaches are so supportive. I finally feel strong and energized every day."
+                    <br>– Ramesh D.
+                </div>
+                <div class="testimonial">
+                    "Love the personalized nutrition plans. No more fad diets!"
+                    <br>– Neha S.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="MINIPROJECT_HOME.html">🏠 Home</a></li>
+                    <li><a href="ABOUT_US.html">📖 About Us</a></li>
+                    <li><a href="PROGRAM.html">💪 Programs</a></li>
+                    <li><a href="WORKOUT.html">🏋️‍♂️ Workouts</a></li>
+                    <li><a href="NUTRITION.html">🥗 Nutrition</a></li>
+                    <li><a href="FITNESSCALCULATOR.html">🧮 Fitness Calculator</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe for weekly fitness tips and updates.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">🔒 Privacy Policy</a></li>
+                    <li><a href="#">📜 Terms & Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 FireFitness. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
